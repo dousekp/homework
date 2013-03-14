@@ -118,6 +118,13 @@ static int find_do_edit_file (WButton * button, int action);
 /* Parsed ignore dirs */
 static char **find_ignore_dirs = NULL;
 
+#ifdef HAVE_CHARSET
+static int FIND_Y = 19;
+#else
+static int FIND_Y = 18;
+#endif
+static int FIND_X = 68;
+
 /* static variables to remember find parameters */
 static WInput *in_start;        /* Start path */
 static WInput *in_name;         /* Filename */
@@ -535,6 +542,7 @@ find_parameters (char **start_dir, ssize_t * start_dir_len,
     /* column width */
     int cw;
 
+    int cbox_position;
     gboolean disable;
 
 #ifdef ENABLE_NLS
